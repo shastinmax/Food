@@ -274,55 +274,7 @@ window.addEventListener("DOMContentLoaded", () => {
       getCloseModal();
     }, 4000);
   }
-  // console.log("зфпрос данных...");
-  // const req = new Promise(function (resolve, reject) {
-  //   setTimeout(() => {
-  //     console.log("Подготовка данных...");
-
-  //     const product = {
-  //       name: "Tv",
-  //       price: 2000,
-  //     };
-  //     resolve(product);
-  //   }, 2000);
-  // });
-  // req.then((product) => {
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       product.status = "order";
-  //       resolve(product);
-  //     }, 2000);
-  //   })
-  //     .then((data) => {
-  //       data.modify = true;
-  //       return data;
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //     })
-  //     .catch(() => {
-  //       console.error("kjkvjh");
-  //     })
-  //     .finally(() => {
-  //       console.log("finally");
-  //     });
-  // });
-  // const test = (time) => {
-  //   return new Promise((resolve) => {
-  //     setTimeout(() => resolve(), time);
-  //   });
-  // };
-  // // test(2000).then(() => console.log("Ну ты олень"));
-  // // test(3000).then(() => console.log("Ну ты Baran"));
-  // Promise.all([test(2000), test(3000)]);
-
-  // fetch("https://jsonplaceholder.typicode.com/posts", {
-  //   method: "POST",
-  //   body: JSON.stringify({ name: "Alex" }),
-  //   headers: {
-  //     "Content-type": "application/json",
-  //   },
-  // })
-  //   .then((response) => response.json())
-  //   .then((json) => console.log(json));
+  fetch("http://localhost:3000/menu")
+    .then((data) => data.json())
+    .then((res) => console.log(res));
 });
