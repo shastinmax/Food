@@ -222,10 +222,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal */ "./js/modules/modal.js");
+/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/services */ "./js/services/services.js");
 
 
-function forms(){
-    const forms = document.querySelectorAll("form");
+
+function forms(formSelector,timeOpenModal){
+    const forms = document.querySelectorAll(formSelector);
 
     const message = {
         loading: "img/form/spinner.svg",
@@ -238,15 +240,6 @@ function forms(){
     forms.forEach((form) => {
         bindPostData(form);
     });
-
-    const postData = async (url, data) => {
-        const res = await fetch(url, {
-            method: "Post",
-            headers: {"Content-type": "application/json"},
-            body: data,
-        });
-        return await res.json();
-    };
 
     function bindPostData(form) {
         form.addEventListener("submit", (e) => {
@@ -265,7 +258,7 @@ function forms(){
 
             const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-            postData("http://localhost:3000/requests", json)
+            (0,_services_services__WEBPACK_IMPORTED_MODULE_1__.postData)("http://localhost:3000/requests", json)
                 .then((data) => {
                     console.log(data);
                     showThanksModal(success);
@@ -283,7 +276,7 @@ function forms(){
     function showThanksModal(message) {
         const prevModalDialog = document.querySelector(".modal__dialog");
         prevModalDialog.classList.add("hide");
-        (0,_modal__WEBPACK_IMPORTED_MODULE_0__.getOpenModal)();
+        (0,_modal__WEBPACK_IMPORTED_MODULE_0__.getOpenModal)('.modal',timeOpenModal);
 
         const thanksModal = document.createElement("div");
         thanksModal.classList.add("modal__dialog");
@@ -299,14 +292,9 @@ function forms(){
             thanksModal.remove();
             prevModalDialog.classList.add("show");
             prevModalDialog.classList.remove("hide");
-            (0,_modal__WEBPACK_IMPORTED_MODULE_0__.getCloseModal)();
+            (0,_modal__WEBPACK_IMPORTED_MODULE_0__.getCloseModal)('.modal');
         }, 4000);
     }
-
-    fetch("http://localhost:3000/menu")
-        .then((data) => data.json())
-        .then((res) => console.log(res));
-
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (forms);
@@ -655,6 +643,28 @@ function timer(){
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (timer);
 
+/***/ }),
+
+/***/ "./js/services/services.js":
+/*!*********************************!*\
+  !*** ./js/services/services.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "postData": () => (/* binding */ postData)
+/* harmony export */ });
+const postData = async (url, data) => {
+    const res = await fetch(url, {
+        method: "Post",
+        headers: {"Content-type": "application/json"},
+        body: data,
+    });
+    return await res.json();
+};
+
+
 /***/ })
 
 /******/ 	});
@@ -742,7 +752,7 @@ window.addEventListener("DOMContentLoaded", () => {
     (0,_modules_timer__WEBPACK_IMPORTED_MODULE_2__["default"])();
     (0,_modules_modal__WEBPACK_IMPORTED_MODULE_3__["default"])("[data-modal]",".modal",timeOpenModal);
     (0,_modules_cards__WEBPACK_IMPORTED_MODULE_1__["default"])();
-    (0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
+    (0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])('form',timeOpenModal);
     (0,_modules_slider__WEBPACK_IMPORTED_MODULE_5__["default"])();
     (0,_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])();
 });

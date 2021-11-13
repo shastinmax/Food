@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
     timer();
     modal("[data-modal]",".modal",timeOpenModal);
     cards();
-    forms();
+    forms('form',timeOpenModal);
     slider();
     calc();
 });
