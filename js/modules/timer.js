@@ -1,5 +1,5 @@
-function timer(){
-    const deadline = "2022-10-25";
+function timer(id,deadline){
+
 
     function getTimeRemaining(endTime) {
         const t = Date.parse(endTime) - Date.parse(new Date()),
@@ -48,7 +48,7 @@ function timer(){
         }
     }
 
-    setClock(".timer", deadline);
+    setClock(id, deadline);
 
 }
 
