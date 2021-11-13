@@ -373,16 +373,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function slider(){
-    const slides = document.querySelectorAll(".offer__slide"),
-        prev = document.querySelector(".offer__slider-prev"),
-        slider = document.querySelector(".offer__slider"),
-        next = document.querySelector(".offer__slider-next"),
-        total = document.querySelector("#total"),
-        current = document.querySelector("#current"),
-        slidesWrapper = document.querySelector(".offer__slider-wrapper"),
-        slidesField = document.querySelector(".offer__slider-inner"),
-        width = window.getComputedStyle(slidesWrapper).width;
+function slider({container,slide,nextArrow,prevArrow,totalCounter,currentCounter,wrapper,field}){
+    const slides = document.querySelectorAll(slide),
+        slider = document.querySelector(container),
+        prev = document.querySelector(prevArrow),
+        next = document.querySelector(nextArrow),
+        total = document.querySelector(totalCounter),
+        current = document.querySelector(currentCounter),
+        slidesWrapper = document.querySelector(wrapper),
+        width = window.getComputedStyle(slidesWrapper).width,
+        slidesField = document.querySelector(field);
 
     let slideIndex = 1;
     let offset = 0;
@@ -752,14 +752,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.addEventListener("DOMContentLoaded", () => {
-    const timeOpenModal = setTimeout(()=>(0,_modules_modal__WEBPACK_IMPORTED_MODULE_3__.getOpenModal)('.modal',timeOpenModal), 50000);
+    const timeOpenModal = setTimeout(() => (0,_modules_modal__WEBPACK_IMPORTED_MODULE_3__.getOpenModal)('.modal', timeOpenModal), 50000);
 
-    (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])(".tabheader__item",".tabcontent",".tabheader__items","tabheader__item_active");
-    (0,_modules_timer__WEBPACK_IMPORTED_MODULE_2__["default"])('.timer','2021-12-06');
-    (0,_modules_modal__WEBPACK_IMPORTED_MODULE_3__["default"])("[data-modal]",".modal",timeOpenModal);
+    (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])(".tabheader__item", ".tabcontent", ".tabheader__items", "tabheader__item_active");
+    (0,_modules_timer__WEBPACK_IMPORTED_MODULE_2__["default"])('.timer', '2021-12-06');
+    (0,_modules_modal__WEBPACK_IMPORTED_MODULE_3__["default"])("[data-modal]", ".modal", timeOpenModal);
     (0,_modules_cards__WEBPACK_IMPORTED_MODULE_1__["default"])();
-    (0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])('form',timeOpenModal);
-    (0,_modules_slider__WEBPACK_IMPORTED_MODULE_5__["default"])();
+    (0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])('form', timeOpenModal);
+    (0,_modules_slider__WEBPACK_IMPORTED_MODULE_5__["default"])({
+        container: ".offer__slider",
+        slide: ".offer__slide",
+        nextArrow: ".offer__slider-next",
+        prevArrow: ".offer__slider-prev",
+        totalCounter: "#total",
+        currentCounter: "#current",
+        wrapper: ".offer__slider-wrapper",
+        field: ".offer__slider-inner",
+    });
     (0,_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])();
 });
 
