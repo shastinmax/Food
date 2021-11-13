@@ -325,26 +325,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getCloseModal": () => (/* binding */ getCloseModal),
 /* harmony export */   "getOpenModal": () => (/* binding */ getOpenModal)
 /* harmony export */ });
-function getOpenModal(modalSelector) {
-    const  modal = document.querySelector(modalSelector)
+function getOpenModal(modalSelector, timeOpenModal) {
+    const modal = document.querySelector(modalSelector)
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
-    clearInterval(timeOpenModal);
+
+    console.log(timeOpenModal)
+    if (timeOpenModal) {
+        clearInterval(timeOpenModal);
+    }
+
 }
 
 function getCloseModal(modalSelector) {
-    const  modal = document.querySelector(modalSelector)
+    const modal = document.querySelector(modalSelector)
     modal.style.display = "none";
     document.body.style.overflow = "";
 }
-function modal(triggerSelector,modalSelector){
+
+function modal(triggerSelector, modalSelector,timeOpenModal) {
     const btnModal = document.querySelectorAll(triggerSelector),
         modal = document.querySelector(modalSelector);
 
 
-
     btnModal.forEach((item) => {
-        item.addEventListener("click", ()=>getOpenModal(modalSelector));
+        item.addEventListener("click", () => getOpenModal(modalSelector,timeOpenModal));
     });
 
     modal.addEventListener("click", (e) => {
@@ -358,14 +363,12 @@ function modal(triggerSelector,modalSelector){
         }
     });
 
-    const timeOpenModal = setTimeout(getOpenModal, 50000);
-
     function showModalByScroll() {
         if (
             window.pageYOffset + document.documentElement.clientHeight >=
             document.documentElement.scrollHeight
         ) {
-            getOpenModal(modalSelector);
+            getOpenModal(modalSelector,timeOpenModal);
             window.removeEventListener("scroll", showModalByScroll);
         }
     }
@@ -733,12 +736,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.addEventListener("DOMContentLoaded", () => {
-
-
+    const timeOpenModal = setTimeout(()=>(0,_modules_modal__WEBPACK_IMPORTED_MODULE_3__.getOpenModal)('.modal',timeOpenModal), 50000);
 
     (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])();
     (0,_modules_timer__WEBPACK_IMPORTED_MODULE_2__["default"])();
-    (0,_modules_modal__WEBPACK_IMPORTED_MODULE_3__["default"])("[data-modal]",".modal");
+    (0,_modules_modal__WEBPACK_IMPORTED_MODULE_3__["default"])("[data-modal]",".modal",timeOpenModal);
     (0,_modules_cards__WEBPACK_IMPORTED_MODULE_1__["default"])();
     (0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
     (0,_modules_slider__WEBPACK_IMPORTED_MODULE_5__["default"])();
