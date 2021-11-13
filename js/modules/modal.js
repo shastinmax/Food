@@ -1,17 +1,18 @@
+function getOpenModal() {
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+    clearInterval(timeOpenModal);
+}
+
+function getCloseModal() {
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+}
 function modal(){
     const btnModal = document.querySelectorAll("[data-modal]"),
         modal = document.querySelector(".modal");
 
-    function getOpenModal() {
-        modal.style.display = "block";
-        document.body.style.overflow = "hidden";
-        clearInterval(timeOpenModal);
-    }
 
-    function getCloseModal() {
-        modal.style.display = "none";
-        document.body.style.overflow = "";
-    }
 
     btnModal.forEach((item) => {
         item.addEventListener("click", getOpenModal);
@@ -43,3 +44,4 @@ function modal(){
     window.addEventListener("scroll", showModalByScroll);
 };
 export default modal;
+export {getCloseModal,getOpenModal}
