@@ -141,6 +141,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./js/services/services.js");
+
+
 function cards() {
     class MenuCard {
         constructor(src, alt, title, descr, price, parentSelector, ...classes) {
@@ -183,14 +186,6 @@ function cards() {
             this.parent.append(element);
         }
     }
-
-    const getResource = async (url) => {
-        const res = await fetch(url);
-        if (!res.ok) {
-            throw new Error(`Could not fetch ${url},status: ${res.status}`);
-        }
-        return await res.json();
-    };
 
     axios.get("http://localhost:3000/menu").then((data) => {
         data.data.forEach(({img, altimg, title, descr, price}) => {
@@ -653,6 +648,7 @@ function timer(){
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getResource": () => (/* binding */ getResource),
 /* harmony export */   "postData": () => (/* binding */ postData)
 /* harmony export */ });
 const postData = async (url, data) => {
@@ -663,6 +659,16 @@ const postData = async (url, data) => {
     });
     return await res.json();
 };
+
+const getResource = async (url) => {
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`Could not fetch ${url},status: ${res.status}`);
+    }
+    return await res.json();
+};
+
+
 
 
 /***/ })
