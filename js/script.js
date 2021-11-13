@@ -9,7 +9,7 @@ import calc from './modules/calc';
 window.addEventListener("DOMContentLoaded", () => {
     const timeOpenModal = setTimeout(()=>getOpenModal('.modal',timeOpenModal), 50000);
 
-    tabs();
+    tabs(".tabheader__item",".tabcontent",".tabheader__items","tabheader__item_active");
     timer();
     modal("[data-modal]",".modal",timeOpenModal);
     cards();
