@@ -8,9 +8,9 @@ function getCloseModal() {
     modal.style.display = "none";
     document.body.style.overflow = "";
 }
-function modal(){
-    const btnModal = document.querySelectorAll("[data-modal]"),
-        modal = document.querySelector(".modal");
+function modal(triggerSelector,modalSelector){
+    const btnModal = document.querySelectorAll(triggerSelector),
+        modal = document.querySelector(modalSelector);
 
 
 

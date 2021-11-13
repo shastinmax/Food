@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     tabs();
     timer();
-    modal();
+    modal("[data-modal]",".modal");
     cards();
     forms();
     slider();

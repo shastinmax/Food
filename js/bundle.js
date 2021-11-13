@@ -335,9 +335,9 @@ function getCloseModal() {
     modal.style.display = "none";
     document.body.style.overflow = "";
 }
-function modal(){
-    const btnModal = document.querySelectorAll("[data-modal]"),
-        modal = document.querySelector(".modal");
+function modal(triggerSelector,modalSelector){
+    const btnModal = document.querySelectorAll(triggerSelector),
+        modal = document.querySelector(modalSelector);
 
 
 
@@ -736,7 +736,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])();
     (0,_modules_timer__WEBPACK_IMPORTED_MODULE_2__["default"])();
-    (0,_modules_modal__WEBPACK_IMPORTED_MODULE_3__["default"])();
+    (0,_modules_modal__WEBPACK_IMPORTED_MODULE_3__["default"])("[data-modal]",".modal");
     (0,_modules_cards__WEBPACK_IMPORTED_MODULE_1__["default"])();
     (0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
     (0,_modules_slider__WEBPACK_IMPORTED_MODULE_5__["default"])();
